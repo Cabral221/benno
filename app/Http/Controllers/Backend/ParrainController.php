@@ -103,6 +103,7 @@ class ParrainController extends Controller
      */
     public function destroy($id)
     {
+        dd($id);
         $parrain = Parrain::find($id);
 
         if($parrain == null) return redirect()->back()->with(['flash_danger' => "L'identifiant fournit ne correspond à aucun enregistrement"]);
