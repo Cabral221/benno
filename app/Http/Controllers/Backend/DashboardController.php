@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Parrain;
 
 /**
  * Class DashboardController.
@@ -14,6 +15,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('backend.dashboard');
+        $parrains = Parrain::all();
+
+        // dd($parrains);
+        return view('backend.dashboard', ['parrains' => $parrains]);
     }
 }

@@ -14,6 +14,9 @@ Route::get('/', [HomeController::class, 'index'])
         $trail->push(__('Home'), route('frontend.index'));
     });
 
+Route::post('/', [HomeController::class, 'parrainer'])
+    ->name('parrainer');
+
 Route::get('terms', [TermsController::class, 'index'])
     ->name('pages.terms')
     ->breadcrumbs(function (Trail $trail) {

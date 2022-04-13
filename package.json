@@ -16,18 +16,22 @@
         "@popperjs/core": "^2.0.6",
         "alpinejs": "^2.3.5",
         "axios": "^0.19",
-        "bootstrap": "^4.5.0",
-        "cross-env": "^7.0",
-        "jquery": "^3.5.1",
+        "bootstrap": "^4.0.0",
+        "cross-env": "^7.0.3",
+        "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.19",
         "perfect-scrollbar": "^1.5.0",
-        "popper.js": "^1.16.1",
+        "popper.js": "^1.12",
         "resolve-url-loader": "^3.1.0",
-        "sass": "^1.20.1",
+        "sass": "^1.15.2",
         "sass-loader": "^8.0.0",
         "sweetalert2": "^9.8.2",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "fontawesome": "^5.6.3",
+        "intl-tel-input": "^17.0.16"
     }
 }
