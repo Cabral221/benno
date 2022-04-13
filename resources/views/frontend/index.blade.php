@@ -13,63 +13,7 @@
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="{{ mix('css/frontend.css') }}" rel="stylesheet">
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-                margin-top: 2rem;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-                max-width: 800px;
-                margin: 0 2rem;
-                border: 1px solid red;
-                padding: 2rem 2rem;
-            }
-
-            .title {
-                font-size: 1.8rem;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        
         @stack('after-styles')
 
         @include('includes.partials.ga')
@@ -87,9 +31,9 @@
                             <a href="{{ route('frontend.user.dashboard') }}">@lang('Dashboard')</a>
                         @endif
     
-                        <a href="{{ route('frontend.user.account') }}">@lang('Account')</a>
+                        <a href="{{ route('frontend.user.account') }}"  class="btn btn-info">@lang('Account')</a>
                     @else
-                        <a href="{{ route('frontend.auth.login') }}">@lang('Login')</a>
+                        <a href="{{ route('frontend.auth.login') }}"  class="btn btn-info">@lang('Login')</a>
     
                         @if (config('boilerplate.access.user.registration'))
                             <a href="{{ route('frontend.auth.register') }}">@lang('Register')</a>
@@ -99,18 +43,23 @@
     
                 <div class="content">
     
-                    <div class="m-b-md">
-                       <div class="title"> Parrainage</div> 
-                       <div class="title"> BENNO BOKK YAKKAR</div>
-                       <div class="title"> Saint-Louis</div>
+                    <div class="m-b-md d-flex justify-content-between">
+                        <div>
+                            <img src="{{ asset('img/logo-bby.jpeg') }}" alt="logo Benno" class="img img-thumbnail h-auto" style="width: 150px; height: 150px">
+                        </div>
+                        <div>
+                            <div class="title"> Parrainage</div> 
+                            <div class="title"> BENNO BOKK YAKKAR</div>
+                            <div class="title"> Saint-Louis</div>
+                        </div>
                     </div><!--title-->
     
                     @include('includes.partials.messages')
 
                     <div class="body">
-                        <div class="card border-warning mb-3">
+                        <div class="card card-message mb-3 bg-transparent">
                             {{-- <div class="card-title">Titre du card</div> --}}
-                            <div class="card-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae iure pariatur expedita officiis, magnam aspernatur quis nulla tenetur ab mollitia similique exercitationem perferendis maxime porro ducimus itaque cum earum est!</div>
+                            <div class="card-body ">Les données recueillies sur la présente plateforme sont exclusivement réservées au parrainage d'une candidature. Tout usage contraire sera puni conformément aux dispositions de la loi n° 2008-12 du 25 janvier 2008 portant sur la protection</div>
                         </div>
     
                         <div class="form">
@@ -122,14 +71,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="first_name">Prénom</label>
-                                                <input type="text" name="first_name" id="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="Ex : Mansour">
+                                                <input type="text" name="first_name" id="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="Prénom">
                                                 @error('first_name')
                                                     <span class="invalid-feedback">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label for="last_name">Nom</label>
-                                                <input type="text" name="last_name" id="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="Ex : Faye">
+                                                <input type="text" name="last_name" id="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="Nom">
                                                 @error('last_name')
                                                     <span class="invalid-feedback">{{ $message }}</span>
                                                 @enderror

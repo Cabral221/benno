@@ -36,16 +36,16 @@
                         <td>
                             <a href="{{ route('admin.parrains.edit', $parrain->id) }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
                             <a href="#" 
-                            class="btn btn-sm btn-danger" 
-                            onclick="if(alert('Etes-vous sûr de vouloir supprimer ce parrain ?')){
-                                event.preventDefault();
-                                document.getElementById('delete-parrain-{{$parrain->id}}').submit();
-                                }">
+                            class="btn btn-sm btn-danger delete-parrain-btn"
+                            data-id="{{$parrain->id}}" 
+                            {{-- onclick="if(alert('123')){document.('delete-parrain-{{$parrain->id}}').submit();}" --}}
+                            >
                                 <i class="fa fa-trash"></i>
+                                <form action="{{ route('admin.parrains.destroy', $parrain->id) }}" method="POST" class="d-none" id="delete-parrain-{{$parrain->id}}">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                             </a>
-                            <form action="{{ route('admin.parrains.destroy', $parrain->id) }}" method="post" class="d-none" id="delete-parrain-{{$parrain->id}}">
-                                @csrf
-                            </form>
                         </td>
                     </tr>
                     @endforeach
