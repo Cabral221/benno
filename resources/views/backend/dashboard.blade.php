@@ -5,7 +5,10 @@
 @section('content')
     <x-backend.card>
         <x-slot name="header">
+
             @lang('Welcome :Name', ['name' => $logged_in_user->name])
+            <span data-href="{{ route('admin.exportcsv') }}" id="export" class="btn btn-success btn-sm ml-4" onclick="exportTasks(event.target);">Exporter CSV</span>
+            <span data-href="{{ route('admin.exportExcel') }}" id="exportExcel" class="btn btn-success btn-sm ml-2" onclick="exportTasks(event.target);">Exporter Excel</span>
         </x-slot>
 
         <x-slot name="body">
@@ -54,3 +57,12 @@
         </x-slot>
     </x-backend.card>
 @endsection
+
+@push('after-scripts')
+<script>
+    function exportTasks(_this) {
+       let _url = $(_this).data('href');
+       window.location.href = _url;
+    }
+ </script>
+@endpush

@@ -13,3 +13,6 @@ Route::get('dashboard', [DashboardController::class, 'index'])
     });
 
 Route::resource('/parrains', ParrainController::class)->only(['edit', 'update', 'destroy']);
+
+Route::get('/exportcsv', [ParrainController::class, 'exportCsv'])->name('exportcsv');
+Route::get('/exportExcel', [ParrainController::class, 'exportExcel'])->name('exportExcel');
