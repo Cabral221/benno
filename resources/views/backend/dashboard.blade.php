@@ -23,6 +23,7 @@
                         <th>NCE</th>
                         <th>NIN</th>
                         <th>Téléphone</th>
+                        <th>Inscris le</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -36,13 +37,10 @@
                         <td>{{ $parrain->nce }}</td>
                         <td>{{ $parrain->nin }}</td>
                         <td>{{ $parrain->phone }}</td>
+                        <td>{{ $parrain->created_at->format('d m Y H:i') }}</td>
                         <td>
                             <a href="{{ route('admin.parrains.edit', $parrain->id) }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                            <a href="#" 
-                            class="btn btn-sm btn-danger"
-                            data-id="{{$parrain->id}}" 
-                            onclick="if(confirm('Êtes-vous sûr de Vouloir supprimer ce parrain ?')){event.preventDefault();document.getElementById('delete-parrain-{{$parrain->id}}').submit();}"
-                            >
+                            <a href="#" class="btn btn-sm btn-danger" data-id="{{$parrain->id}}" onclick="if(confirm('Êtes-vous sûr de Vouloir supprimer ce parrain ?')){event.preventDefault();document.getElementById('delete-parrain-{{$parrain->id}}').submit();}">
                                 <i class="fa fa-trash"></i>
                             </a>
                             <form action="{{ route('admin.parrains.destroy', $parrain->id) }}" method="POST" class="d-none" id="delete-parrain-{{$parrain->id}}">
@@ -70,7 +68,6 @@
         let id = e.target.dataset.id
         if (confirm('Êtes-vous sûr de Vouloir supprimer ce parrain ?')) {
             let form = $('#delete-parrain-' + id)
-            console.log(form)
             form.submit()
         }else{
             console.log(false)
@@ -78,8 +75,9 @@
     }
 
     $(document).ready(() => {
-        $('#table_parrains').DataTable();
+        $('#table_parrains').DataTable({"order": [0, 'asc']});
     });
+
 
  </script>
 @endpush
