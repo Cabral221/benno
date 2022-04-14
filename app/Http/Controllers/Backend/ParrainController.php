@@ -64,15 +64,13 @@ class ParrainController extends Controller
     */
     public function destroy($id)
     {
-        dd($id);
         $parrain = Parrain::find($id);
         
         if($parrain == null) return redirect()->back()->with(['flash_danger' => "L'identifiant fournit ne correspond à aucun enregistrement"]);
         
         $parrain->delete();
-        return redirect()->route('admin.dashboard')->with(['flash_sucess' => "Suppression réussi !"]);
+        return redirect()->route('admin.dashboard')->with(['flash_success' => "Suppression réussi !"]);
     }
-    
     
     public function exportCsv(Request $request)
     {

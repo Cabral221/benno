@@ -27,11 +27,12 @@
             <div class="flex-center position-ref">
                 <div class="top-right links">
                     @auth
-                        @if ($logged_in_user->isUser())
-                            <a href="{{ route('frontend.user.dashboard') }}">@lang('Dashboard')</a>
-                        @endif
+                        {{-- @if ($logged_in_user->isUser())
+                            <a href="{{ route('frontend.user.dashboard') }}" class="btn btn-info">@lang('Dashboard')</a>
+                        @endif --}}
     
-                        <a href="{{ route('frontend.user.account') }}"  class="btn btn-info">@lang('Account')</a>
+                        <a href="{{ route('frontend.user.account') }}"  class="btn btn-warning">@lang('Account')</a>
+                        <a href="{{ route('admin.dashboard') }}"  class="btn btn-warning">@lang('Tableau de board')</a>
                     @else
                         <a href="{{ route('frontend.auth.login') }}"  class="btn btn-info">@lang('Login')</a>
     

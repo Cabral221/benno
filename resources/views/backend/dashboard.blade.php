@@ -13,7 +13,7 @@
 
         <x-slot name="body">
             <h2>Listes des parrains</h2>
-            <table class="table">
+            <table class="table" id="table_parrains">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -29,7 +29,7 @@
                 <tbody>
                     @foreach ($parrains as $parrain)
                     <tr>
-                        <td>{{ $parrain->id }}</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $parrain->last_name }}</td>
                         <td>{{ $parrain->first_name }}</td>
                         <td>{{ $parrain->taille }}</td>
@@ -39,16 +39,16 @@
                         <td>
                             <a href="{{ route('admin.parrains.edit', $parrain->id) }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
                             <a href="#" 
-                            class="btn btn-sm btn-danger delete-parrain-btn"
+                            class="btn btn-sm btn-danger"
                             data-id="{{$parrain->id}}" 
-                            {{-- onclick="if(alert('123')){document.('delete-parrain-{{$parrain->id}}').submit();}" --}}
+                            onclick="if(confirm('Êtes-vous sûr de Vouloir supprimer ce parrain ?')){event.preventDefault();document.getElementById('delete-parrain-{{$parrain->id}}').submit();}"
                             >
                                 <i class="fa fa-trash"></i>
-                                <form action="{{ route('admin.parrains.destroy', $parrain->id) }}" method="POST" class="d-none" id="delete-parrain-{{$parrain->id}}">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
                             </a>
+                            <form action="{{ route('admin.parrains.destroy', $parrain->id) }}" method="POST" class="d-none" id="delete-parrain-{{$parrain->id}}">
+                                @csrf
+                                @method('DELETE')
+                            </form>
                         </td>
                     </tr>
                     @endforeach
@@ -64,5 +64,22 @@
        let _url = $(_this).data('href');
        window.location.href = _url;
     }
+
+    function deleteParrain(e) {
+        e.preventDefault()
+        let id = e.target.dataset.id
+        if (confirm('Êtes-vous sûr de Vouloir supprimer ce parrain ?')) {
+            let form = $('#delete-parrain-' + id)
+            console.log(form)
+            form.submit()
+        }else{
+            console.log(false)
+        }
+    }
+
+    $(document).ready(() => {
+        $('#table_parrains').DataTable();
+    });
+
  </script>
 @endpush

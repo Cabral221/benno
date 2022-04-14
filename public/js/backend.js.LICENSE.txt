@@ -9,3 +9,7 @@
  * Copyright 2020 Hyunje Jun, MDBootstrap and Contributors
  * Licensed under MIT
  */
+
+/*! DataTables 1.11.5
+ * ©2008-2021 SpryMedia Ltd - datatables.net/license
+ */
