@@ -25,10 +25,10 @@ class HomeController extends Controller
         $this->validate($request, [
             'first_name' => ['required', 'string'],
             'last_name' => ['required', 'string'],
-            'nin' => ['required', 'string'],
-            'nce' => ['required', 'string'],
+            'nin' => ['required', 'string', 'unique:parrains,nin'],
+            'nce' => ['required', 'string', 'unique:parrains,nce'],
             'taille' => ['required', 'integer'],
-            'phone' => ['required', 'integer'],
+            'phone' => ['required', 'integer', 'unique:parrains,phone'],
         ]);
 
         Parrain::create($request->all());
