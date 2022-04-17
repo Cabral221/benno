@@ -13,15 +13,14 @@
 
         <x-slot name="body">
             <h2>Listes des parrains</h2>
-            <table class="table" id="table_parrains">
+            <table class="table display nowrap table-striped table-hover" id="table_parrains">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Taille</th>
-                        <th>NCE</th>
-                        <th>NIN</th>
+                        <th>N°</th>
+                        <th>Prénom(s) et Nom</th>
+                        <th>Numéro de la carte d'électeur</th>
+                        <th>Numéro d'identification national</th>
+                        <th>Taille de l'électeur</th>
                         <th>Téléphone</th>
                         <th>Inscris le</th>
                         <th>Actions</th>
@@ -31,11 +30,10 @@
                     @foreach ($parrains as $parrain)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $parrain->last_name }}</td>
-                        <td>{{ $parrain->first_name }}</td>
-                        <td>{{ $parrain->taille }}</td>
+                        <td>{{ ucfirst($parrain->first_name.' '.$parrain->last_name) }}</td>
                         <td>{{ $parrain->nce }}</td>
                         <td>{{ $parrain->nin }}</td>
+                        <td>{{ $parrain->taille }}</td>
                         <td>{{ $parrain->phone }}</td>
                         <td>{{ $parrain->created_at->format('d m Y H:i') }}</td>
                         <td>
@@ -57,7 +55,7 @@
 @endsection
 
 @push('after-scripts')
-<script>
+<script defer>
     function exportTasks(_this) {
        let _url = $(_this).data('href');
        window.location.href = _url;
@@ -75,7 +73,16 @@
     }
 
     $(document).ready(() => {
-        $('#table_parrains').DataTable({"order": [0, 'asc']});
+        window.$('#table_parrains').DataTable({
+            "order": [0, 'asc'],
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                    type: 'column',
+                    target: 'tr'
+                }
+            }
+        });
     });
 
 

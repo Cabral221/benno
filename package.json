@@ -18,7 +18,7 @@
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0.3",
-        "jquery": "^3.2",
+        "jquery": "^3.6.0",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.19",
         "perfect-scrollbar": "^1.5.0",
@@ -32,8 +32,12 @@
     },
     "dependencies": {
         "datatables.net": "^1.11.5",
+        "datatables.net-buttons-dt": "^2.2.2",
         "datatables.net-dt": "^1.11.5",
+        "datatables.net-responsive-dt": "^2.2.9",
         "fontawesome": "^5.6.3",
-        "intl-tel-input": "^17.0.16"
+        "intl-tel-input": "^17.0.16",
+        "jszip": "^3.9.1",
+        "pdfmake": "^0.2.5"
     }
 }
