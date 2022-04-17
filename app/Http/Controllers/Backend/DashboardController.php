@@ -15,9 +15,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $parrains = Parrain::all();
+        $parrains = Parrain::orderBy('created_at', 'DESC')->get();
 
-        // dd($parrains);
         return view('backend.dashboard', ['parrains' => $parrains]);
     }
 }
