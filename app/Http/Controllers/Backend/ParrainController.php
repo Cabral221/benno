@@ -40,10 +40,10 @@ class ParrainController extends Controller
         $this->validate($request, [
             'first_name' => ['required', 'string'],
             'last_name' => ['required', 'string'],
-            'nin' => ['required', 'string'],
-            'nce' => ['required', 'string'],
+            'nin' => ['required', 'string', 'unique:parrains,nin,' . $id],
+            'nce' => ['required', 'string', 'unique:parrains,nce,' . $id],
             'taille' => ['required', 'integer'],
-            'phone' => ['required', 'integer'],
+            'phone' => ['required', 'integer', 'unique:parrains,phone,' . $id],
         ]);
         
         $parrain = Parrain::find($id);
