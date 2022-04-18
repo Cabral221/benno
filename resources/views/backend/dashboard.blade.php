@@ -9,6 +9,7 @@
             @lang('Welcome :Name', ['name' => $logged_in_user->name])
             <span data-href="{{ route('admin.exportcsv') }}" id="export" class="btn btn-success btn-sm ml-4" onclick="exportTasks(event.target);">Exporter CSV</span>
             <span data-href="{{ route('admin.exportExcel') }}" id="exportExcel" class="btn btn-success btn-sm ml-2" onclick="exportTasks(event.target);">Exporter Excel</span>
+            <span data-href="{{ route('admin.exportPdf') }}" id="exportPdf" class="btn btn-success btn-sm ml-2" onclick="exportTasks(event.target);">Exporter PDF</span>
         </x-slot>
 
         <x-slot name="body">

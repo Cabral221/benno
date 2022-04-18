@@ -16,3 +16,4 @@ Route::resource('/parrains', ParrainController::class)->only(['edit', 'update', 
 
 Route::get('/exportcsv', [ParrainController::class, 'exportCsv'])->name('exportcsv');
 Route::get('/exportExcel', [ParrainController::class, 'exportExcel'])->name('exportExcel');
+Route::get('/exportPdf', [ParrainController::class, 'exportPdf'])->name('exportPdf');

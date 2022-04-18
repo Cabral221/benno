@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Carbon\Carbon;
 use App\Models\Parrain;
+use PDF;
 use Shuchkin\SimpleXLSXGen;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -128,5 +129,16 @@ class ParrainController extends Controller
         
         $xlsx = SimpleXLSXGen::fromArray($array);
         $xlsx->downloadAs('liste-parrains-'. Carbon::now() .'.xlsx');
+    }
+
+    public function exportPdf()
+    {
+        $data = ['title' => "Tester l'exportation PDF avec un Design"];
+
+        $pdf = PDF::loadView('backend.parrains.exportPdf', $data);
+
+        $pdf->setPaper('A4', 'landscape');
+  
+        return $pdf->download('itsolutionstuff.pdf');
     }
 }
